@@ -1,7 +1,26 @@
 # Arova — Dating App
 
+<div align="center">
+  <br />
+  <img width="1280" height="720" alt="Arova" src="./public/arova.png" />
+  <br />
+  <div>
+    <img src="https://img.shields.io/badge/-Next.js_15-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
+    <img src="https://img.shields.io/badge/-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
+    <img src="https://img.shields.io/badge/-Stripe-635BFF?style=for-the-badge&logo=stripe&logoColor=white" alt="Stripe" />
+    <img src="https://img.shields.io/badge/-Stream-005FFF?style=for-the-badge&logoColor=white" alt="Stream" />
+    <img src="https://img.shields.io/badge/-EmailJS-FF6B35?style=for-the-badge&logoColor=white" alt="EmailJS" />
+    <img src="https://img.shields.io/badge/-TailwindCSS_v4-06B6D4?style=for-the-badge&logo=tailwindcss" alt="Tailwind CSS" />
+  </div>
+  <h3 align="center">Match Making SaaS — Next.js 15, Supabase, Stripe, and Stream</h3>
+</div>
+
+---
+
+## Overview
+
 Arova is a full-stack dating app: swipe-based matching, real-time chat, and
-live video calls, built on Next.js (App Router), Supabase, and Stream.
+live video calls, built on Next.js (App Router), Supabase, Stripe, and Stream.
 
 ## Tech stack
 
