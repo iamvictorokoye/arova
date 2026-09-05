@@ -72,7 +72,7 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="flex flex-1 items-center justify-center bg-gradient-to-br from-rose-50 via-background to-purple-50 px-4 py-10 dark:from-background dark:via-background dark:to-background">
+    <div className="flex flex-1 items-center justify-center bg-linear-to-br from-rose-50 via-background to-purple-50 px-4 py-10 dark:from-background dark:via-background dark:to-background">
       <Card className="w-full max-w-md">
         <CardHeader className="items-center text-center">
           <span className="mb-2 flex size-12 items-center justify-center rounded-full brand-gradient text-primary-foreground">

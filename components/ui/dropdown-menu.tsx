@@ -55,8 +55,8 @@ function DropdownMenuItem({
         "relative flex cursor-default items-center gap-2 rounded-lg px-2.5 py-2 text-sm outline-none select-none",
         "focus:bg-accent focus:text-accent-foreground",
         "data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive",
-        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        "data-[inset]:pl-8",
+        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "data-inset:pl-8",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
@@ -77,7 +77,7 @@ function DropdownMenuLabel({
       data-slot="dropdown-menu-label"
       data-inset={inset}
       className={cn(
-        "px-2.5 py-1.5 text-xs font-medium text-muted-foreground data-[inset]:pl-8",
+        "px-2.5 py-1.5 text-xs font-medium text-muted-foreground data-inset:pl-8",
         className,
       )}
       {...props}
