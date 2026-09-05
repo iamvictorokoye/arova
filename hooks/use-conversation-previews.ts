@@ -20,12 +20,6 @@ async function waitForConnection(client: StreamChat, cancelled: { current: boole
   }
 }
 
-/**
- * Builds a per-match preview (last message + unread count) by querying
- * Stream channels directly, keyed by the *other* member's id — which is
- * a Supabase user id, since that's what this app uses as the Stream user
- * id everywhere else. Kept live via the same events the chat UI reacts to.
- */
 export function useConversationPreviews() {
   const user = useAuthStore((state) => state.user);
   const [previews, setPreviews] = useState<Record<string, ConversationPreview>>({});

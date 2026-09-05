@@ -7,9 +7,6 @@ import ChatSidebar from "@/components/ChatSidebar";
 export default function ChatPage() {
   return (
     <>
-      {/* Mobile: the list is the whole page. Desktop already has it via
-          the persistent sidebar in app/chat/layout.tsx, so it's hidden
-          here to avoid rendering it twice. */}
       <ChatSidebar className="flex-1 md:hidden" />
 
       <div className="hidden flex-1 flex-col items-center justify-center gap-3 bg-muted/30 text-center md:flex">

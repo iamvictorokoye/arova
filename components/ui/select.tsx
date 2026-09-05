@@ -26,7 +26,7 @@ function SelectTrigger({
         "flex h-10 w-full items-center justify-between gap-2 rounded-xl border border-input bg-background px-3.5 py-2 text-sm shadow-sm outline-none",
         "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring",
         "disabled:cursor-not-allowed disabled:opacity-50",
-        "data-[placeholder]:text-muted-foreground",
+        "data-placeholder:text-muted-foreground",
         className,
       )}
       {...props}
@@ -63,7 +63,7 @@ function SelectContent({
           className={cn(
             "p-1",
             position === "popper" &&
-              "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
+              "h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width)",
           )}
         >
           {children}
@@ -84,7 +84,7 @@ function SelectItem({
       className={cn(
         "relative flex w-full cursor-default items-center gap-2 rounded-lg py-2 pr-8 pl-3 text-sm outline-none select-none",
         "focus:bg-accent focus:text-accent-foreground",
-        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "data-disabled:pointer-events-none data-disabled:opacity-50",
         className,
       )}
       {...props}

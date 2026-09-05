@@ -83,7 +83,7 @@ export default function EditProfilePage() {
     return (
       <div className="container mx-auto max-w-2xl flex-1 px-4 py-10">
         <Skeleton className="mb-8 h-10 w-56" />
-        <Skeleton className="h-[520px] w-full rounded-3xl" />
+        <Skeleton className="h-130 w-full rounded-3xl" />
       </div>
     );
   }

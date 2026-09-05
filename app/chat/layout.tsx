@@ -10,9 +10,6 @@ export default function ChatLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="flex h-[calc(100dvh-4rem)] flex-1 overflow-hidden">
-      {/* Persistent sidebar on desktop, WhatsApp-style. On mobile, the
-          conversation list instead lives inline in app/chat/page.tsx so
-          it can take the full screen until a chat is opened. */}
       <aside className="hidden w-full max-w-sm shrink-0 border-r border-border md:flex">
         <ChatSidebar activeUserId={activeUserId} className="w-full" />
       </aside>

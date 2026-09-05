@@ -56,9 +56,6 @@ function formatTime(date: Date) {
   return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
 
-/** Groups consecutive same-sender messages (within a few minutes of each
- * other) so they render as one visual "stack" with a single timestamp,
- * and inserts a date divider whenever the calendar day changes. */
 function buildChatItems(messages: ChatMessage[]): ChatListItem[] {
   const items: ChatListItem[] = [];
   let lastDate: Date | null = null;
@@ -142,9 +139,6 @@ export default function StreamChatInterface({
 
     if (isInitialLoadRef.current) {
       isInitialLoadRef.current = false;
-      // Jump straight to the bottom on first load (no animation), then do
-      // it again next frame in case avatars/images were still affecting
-      // layout height when the first jump ran.
       scrollToBottom("auto");
       requestAnimationFrame(() => scrollToBottom("auto"));
     } else {
@@ -190,10 +184,6 @@ export default function StreamChatInterface({
         if (cancelled) return;
         setCurrentUserId(userId);
 
-        // StreamChat.getInstance is a singleton per API key, shared with
-        // ChatNotificationsProvider — this reuses that connection instead
-        // of creating a second one, and we deliberately never disconnect
-        // it below so the app-wide unread badge keeps working.
         const chatClient = StreamChat.getInstance(apiKey);
         if (!chatClient.userID) {
           await chatClient.connectUser({ id: userId, name: userName, image: userImage }, token);
@@ -256,8 +246,6 @@ export default function StreamChatInterface({
               prev.some((msg) => msg.id === newMsg.id) ? prev : [...prev, newMsg],
             );
             if (soundEnabledRef.current) playReceiveSound();
-            // The user is actively looking at this conversation, so mark
-            // it read immediately instead of letting it sit "unread".
             chatChannel.markRead().catch(() => {});
           }
         };
@@ -282,9 +270,6 @@ export default function StreamChatInterface({
       } catch (error) {
         console.error(error);
         if (!cancelled) {
-          // Stay on this page and offer a retry instead of silently
-          // bouncing back to /chat — a network blip here shouldn't look
-          // like the conversation vanished.
           setConnectionError(
             error instanceof Error ? error.message : "Failed to connect to chat.",
           );

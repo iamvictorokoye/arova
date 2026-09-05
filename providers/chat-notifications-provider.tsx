@@ -50,13 +50,7 @@ export function ChatNotificationsProvider({ children }: { children: React.ReactN
         setUnreadCount(event.total_unread_count);
       }
     }
-
-    // Stream only fires `notification.message_new` for channels you're a
-    // member of but NOT actively watching — i.e. exactly the "you weren't
-    // looking at this conversation" case this is for. The channel you have
-    // open fires plain `message.new` instead, which this ignores, so the
-    // open chat's own receive sound (in StreamChatInterface) is the only
-    // one that plays for it, and no duplicate toast shows for it either.
+    
     function handleBackgroundMessage(event: Event) {
       updateBadge(event);
 
@@ -115,10 +109,6 @@ export function ChatNotificationsProvider({ children }: { children: React.ReactN
         client.on("notification.message_new", handleBackgroundMessage);
         client.on("notification.mark_read", updateBadge);
       } catch (error) {
-        // Retries already ran inside withRetry — this is a genuine, lasting
-        // failure (e.g. sustained network outage), so give up quietly
-        // rather than looping forever. The badge/toasts just won't work
-        // until the next successful connect (e.g. on next navigation).
         console.error("Failed to connect chat notifications:", error);
       }
     }

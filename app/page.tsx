@@ -29,7 +29,7 @@ export default function Home() {
   const initialized = useAuthStore((state) => state.initialized);
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-gradient-to-br from-rose-50 via-background to-purple-50 dark:from-background dark:via-background dark:to-background">
+    <div className="flex flex-1 flex-col items-center justify-center bg-linear-to-br from-rose-50 via-background to-purple-50 dark:from-background dark:via-background dark:to-background">
       <section className="container mx-auto px-6 py-20 lg:py-28">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-5xl font-bold tracking-tight text-foreground lg:text-7xl">

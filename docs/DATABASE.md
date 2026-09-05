@@ -144,12 +144,6 @@ CREATE POLICY "Users can view their own matches" ON public.matches
     FOR SELECT USING (auth.uid() = user1_id OR auth.uid() = user2_id);
 ```
 
-> **Note:** the discovery feed (`getPotentialMatches`) currently reads
-> `public.users` directly, so for a real deployment you'll want an
-> additional `SELECT` policy (or a security-definer RPC) that lets
-> authenticated users read *other* users' public fields — the policy above
-> only covers viewing your own row.
-
 ## Storage bucket (required for photo uploads)
 
 The profile photo uploader writes to a bucket named **`profile-photos`**,

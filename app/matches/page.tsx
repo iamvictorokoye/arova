@@ -15,7 +15,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function MatchesPage() {
   const { data: potentialMatches = [], isLoading } = usePotentialMatches();
-  // console.log("potentialMatches: ", potentialMatches);
   const { mutate: likeUser, isPending: isLiking } = useLikeUser();
 
   const [currentIndex, setCurrentIndex] = useState(0);

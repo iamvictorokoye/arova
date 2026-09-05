@@ -9,17 +9,6 @@ import { createClient } from "@/lib/supabase/client";
 import { useAuthStore } from "@/store/auth-store";
 import { useChatNotificationsStore } from "@/store/chat-store";
 
-/**
- * Subscribes to Supabase auth state once and mirrors it into the
- * `useAuthStore` zustand store, so any component can read `user` /
- * `initialized` without needing a React context each has to subscribe to.
- *
- * Also clears the React Query cache whenever the authenticated user id
- * actually changes. Query keys like ["profile", "me"] don't include a user
- * id, so without this, signing out and into a different account would keep
- * serving the previous account's cached profile/matches/etc. until a full
- * page reload recreated the QueryClient from scratch.
- */
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const setUser = useAuthStore((state) => state.setUser);
   const setInitialized = useAuthStore((state) => state.setInitialized);
@@ -63,8 +52,6 @@ export function useSignOut() {
     setUser(null);
     setUnreadCount(0);
 
-    // Best-effort: drop the shared Stream Chat connection so the next
-    // person to use this browser doesn't inherit this user's session.
     const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
     if (apiKey) {
       StreamChat.getInstance(apiKey)

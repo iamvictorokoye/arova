@@ -1,12 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-/**
- * Wraps supabase.auth.getUser() with a couple of retries. Server actions
- * call this on nearly every request, and a single flaky network blip
- * between the server and Supabase (ETIMEDOUT, DNS hiccups, etc.) would
- * otherwise surface as "Not authenticated" even though the session is
- * completely fine. A genuinely logged-out user still fails after retries.
- */
 export async function getAuthenticatedUser(supabase: SupabaseClient) {
   let lastError: unknown = null;
 
