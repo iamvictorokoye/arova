@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, use as usePromise } from "react";
+import { useRef, use } from "react";
 import { useRouter } from "next/navigation";
 
 import ChatHeader from "@/components/ChatHeader";
@@ -14,8 +14,8 @@ interface ChatConversationPageProps {
   params: Promise<{ userId: string }>;
 }
 
-export default function ChatConversationPage({ params }: ChatConversationPageProps) {
-  const { userId } = usePromise(params);
+export default function ChatConversationPage(props: ChatConversationPageProps) {
+  const { userId } = use(props.params);
   const { data: matches = [], isLoading, isError, refetch } = useUserMatches();
   const chatInterfaceRef = useRef<{ handleVideoCall: () => void }>(null);
   const router = useRouter();
