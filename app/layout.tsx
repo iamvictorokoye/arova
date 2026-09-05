@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AppProviders } from "@/providers/app-providers";
 import Navbar from "@/components/Navbar";
+import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,24 +19,28 @@ export const metadata: Metadata = {
   title: "Arova - Find Your Perfect Match",
   description:
     "Connect with like-minded people through live streaming, meaningful conversations, and authentic connections on Arova.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Arova",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#EC4899",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
         <AppProviders>
           <div className="flex min-h-full flex-col">
             <Navbar />
             <main className="flex flex-1 flex-col">{children}</main>
           </div>
         </AppProviders>
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
