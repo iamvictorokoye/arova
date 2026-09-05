@@ -18,10 +18,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-/**
- * Renders the "someone is calling you" prompt whenever the shared
- * call-store has a ringing call, regardless of which chat is on screen.
- */
 export default function IncomingCallDialog({ caller }: { caller: UserProfile }) {
   const incomingCall = useCallStore((state) => state.incomingCall);
   const acceptIncomingCall = useCallStore((state) => state.acceptIncomingCall);
@@ -51,7 +47,7 @@ export default function IncomingCallDialog({ caller }: { caller: UserProfile }) 
           </Avatar>
           <DialogTitle className="text-xl">Incoming video call</DialogTitle>
           <DialogDescription>
-            {incomingCall?.callerName ?? caller.full_name} is calling you
+            {caller?.full_name ?? caller.username} is calling you
           </DialogDescription>
         </DialogHeader>
 
